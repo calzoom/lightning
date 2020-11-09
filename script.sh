@@ -6,7 +6,7 @@
 #SBATCH --account=fc_ntugame
 #
 # Partition:s
-#SBATCH --partition=savio2_gpu
+#SBATCH --partition=savio2_1080ti
 #
 # QoS:
 #SBATCH --qos=savio_normal
@@ -25,9 +25,5 @@
 # Wall clock limit:
 #SBATCH --time=4:00:00
 #
-
-# debugging flags (optional)
-export NCCL_DEBUG=INFO
-export PYTHONFAULTHANDLER=1
 
 python -u main.py >& output.out

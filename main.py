@@ -217,5 +217,5 @@ class GAN(pl.LightningModule):
 
 dm = MNISTDataModule()
 model = GAN(*dm.size())
-trainer = pl.Trainer(gpus=4, max_epochs=50, progress_bar_refresh_rate=20, accelerator='ddp')
+trainer = pl.Trainer(gpus=1, max_epochs=50, progress_bar_refresh_rate=20, accelerator='ddp')
 trainer.fit(model, dm)
