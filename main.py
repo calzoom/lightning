@@ -102,7 +102,7 @@ class Discriminator(nn.Module):
 
         return validity
 
- class GAN(pl.LightningModule):
+class GAN(pl.LightningModule):
 
     def __init__(
         self,
@@ -213,4 +213,5 @@ class Discriminator(nn.Module):
 
 dm = MNISTDataModule()
 model = GAN(*dm.size())
-trainer  = pl.Trainer(gpus=1, max_epochs=5, progress_bar_refresh_rate=20)
+trainer  = pl.Trainer(gpus=4, max_epochs=50, progress_bar_refresh_rate=20, accelerator='ddp')
+trainer.fit(model, dm)
