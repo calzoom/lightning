@@ -14,7 +14,6 @@ from torchvision.datasets import MNIST
 
 import pytorch_lightning as pl
 
-
 class MNISTDataModule(pl.LightningDataModule):
 
   def __init__(self, data_dir: str = './', batch_size: int = 64, num_workers: int = 8):
@@ -218,6 +217,9 @@ class GAN(pl.LightningModule):
 
 dm = MNISTDataModule()
 model = GAN(*dm.size())
-trainer = pl.Trainer(gpus=4, max_epochs=50, progress_bar_refresh_rate=20, accelerator='ddp')
-# trainer = pl.Trainer(gpus=1, max_epochs=50, progress_bar_refresh_rate=20)
+trainer = pl.Trainer(resume_from_checkpoint='./lightning_logs/',
+                     gpus=4,
+                     max_epochs=50,
+                     progress_bar_refresh_rate=20,
+                     accelerator='ddp')
 trainer.fit(model, dm)
