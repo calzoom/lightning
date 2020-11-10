@@ -217,7 +217,7 @@ class GAN(pl.LightningModule):
 
 dm = MNISTDataModule()
 model = GAN(*dm.size())
-trainer = pl.Trainer(resume_from_checkpoint='lightning_logs/version_5/checkpoints/epoch=49.ckpt',
+trainer = pl.Trainer(resume_from_checkpoint='lightning_logs/version_8/checkpoints/epoch=170.ckpt',
                      gpus=4,
                      max_epochs=500,
                      progress_bar_refresh_rate=20,
